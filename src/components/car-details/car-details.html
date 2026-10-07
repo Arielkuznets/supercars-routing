@@ -2,9 +2,14 @@
   <a class="back" [routerLink]="['/garage', car().brand]">→ חזרה ל{{ brand()?.name }}</a>
 
   <div class="layout">
-    <div class="showroom">
-      <app-car-silhouette [color]="car().color" [transitionName]="'car-' + car().id" />
-    </div>
+    <figure class="showroom">
+      <app-car-photo [car]="car()" [priority]="true" sizes="(max-width: 800px) 100vw, 560px" />
+      <figcaption dir="ltr">
+        📷
+        <a [href]="car().photo.source" target="_blank" rel="noopener">{{ car().photo.author }}</a>
+        · {{ car().photo.license }} · Wikimedia Commons
+      </figcaption>
+    </figure>
 
     <div class="info">
       <p class="eyebrow">{{ brand()?.name }} · {{ brand()?.country }} · {{ car().year }}</p>

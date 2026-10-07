@@ -17,16 +17,23 @@
 }
 
 .showroom {
-  padding: 3rem 1.5rem;
+  margin: 0;
+}
+
+.showroom app-car-photo {
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background:
-    radial-gradient(
-      ellipse at 50% 80%,
-      color-mix(in srgb, var(--car-color) 30%, transparent),
-      transparent 70%
-    ),
-    var(--surface);
+  box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--car-color) 60%, transparent);
+}
+
+.showroom figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.showroom figcaption a {
+  color: var(--text);
 }
 
 .info h1 {

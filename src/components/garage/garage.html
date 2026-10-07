@@ -45,26 +45,28 @@
   <div class="grid">
     @for (car of cars(); track car.id) {
       <a class="car-card card" [routerLink]="['/car', car.id]">
-        <app-car-silhouette [color]="car.color" [transitionName]="'car-' + car.id" />
-        <span class="brand-tag">{{ brandName(car.brand) }} · {{ car.year }}</span>
-        <h3>
-          <bdi>{{ car.model }}</bdi>
-        </h3>
-        <dl class="mini-specs">
-          <div>
-            <dt>כ"ס</dt>
-            <dd>{{ car.hp | number }}</dd>
-          </div>
-          <div>
-            <dt>קמ"ש</dt>
-            <dd>{{ car.topSpeed }}</dd>
-          </div>
-          <div>
-            <dt>0-100</dt>
-            <dd>{{ car.zeroToHundred | number: '1.1-1' }}s</dd>
-          </div>
-        </dl>
-        <p class="price">{{ car.price | currency: 'USD' : 'symbol' : '1.0-0' }}</p>
+        <app-car-photo [car]="car" />
+        <div class="car-info">
+          <span class="brand-tag">{{ brandName(car.brand) }} · {{ car.year }}</span>
+          <h3>
+            <bdi>{{ car.model }}</bdi>
+          </h3>
+          <dl class="mini-specs">
+            <div>
+              <dt>כ"ס</dt>
+              <dd>{{ car.hp | number }}</dd>
+            </div>
+            <div>
+              <dt>קמ"ש</dt>
+              <dd>{{ car.topSpeed }}</dd>
+            </div>
+            <div>
+              <dt>0-100</dt>
+              <dd>{{ car.zeroToHundred | number: '1.1-1' }}s</dd>
+            </div>
+          </dl>
+          <p class="price">{{ car.price | currency: 'USD' : 'symbol' : '1.0-0' }}</p>
+        </div>
       </a>
     } @empty {
       <div class="empty card">

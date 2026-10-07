@@ -3,11 +3,11 @@ import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SortKey } from '../../models/car';
 import { CarsService } from '../../services/cars';
-import { CarSilhouette } from '../car-silhouette/car-silhouette';
+import { CarPhoto } from '../car-photo/car-photo';
 
 @Component({
   selector: 'app-garage',
-  imports: [RouterLink, RouterLinkActive, DecimalPipe, CurrencyPipe, CarSilhouette],
+  imports: [RouterLink, RouterLinkActive, DecimalPipe, CurrencyPipe, CarPhoto],
   templateUrl: './garage.html',
   styleUrl: './garage.css',
 })

@@ -22,6 +22,11 @@ const CARS: Car[] = [
     price: 525000,
     color: '#dc2626',
     description: 'הפרארי ההיברידית הראשונה לייצור סדרתי, עם הנעה כפולה ו-25 ק"מ נסיעה חשמלית שקטה.',
+    photo: {
+      author: 'Calreyn88',
+      license: 'CC BY 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Ferrari_SF90_Stradale_Mayfair.jpg',
+    },
   },
   {
     id: '296-gtb',
@@ -33,8 +38,13 @@ const CARS: Car[] = [
     topSpeed: 330,
     zeroToHundred: 2.9,
     price: 320000,
-    color: '#b91c1c',
+    color: '#eab308',
     description: 'מנוע V6 ראשון בפרארי כביש מאז הדינו, עם צליל שזכה לכינוי "ה-V12 הקטן".',
+    photo: {
+      author: 'Alexander Migl',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Ferrari_296_GTB_1X7A6377.jpg',
+    },
   },
   {
     id: 'revuelto',
@@ -46,8 +56,13 @@ const CARS: Car[] = [
     topSpeed: 350,
     zeroToHundred: 2.5,
     price: 608000,
-    color: '#eab308',
+    color: '#e5e7eb',
     description: 'יורשת האוונטדור: V12 בלי טורבו ומעל 1,000 כ"ס בזכות שלושה מנועים חשמליים.',
+    photo: {
+      author: 'Alexander-93',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Lamborghini_Revuelto_IMG_0562.jpg',
+    },
   },
   {
     id: 'huracan-sto',
@@ -59,8 +74,13 @@ const CARS: Car[] = [
     topSpeed: 310,
     zeroToHundred: 3.0,
     price: 330000,
-    color: '#65a30d',
+    color: '#0ea5e9',
     description: 'מכונית מסלול עם לוחית רישוי, שפותחה על בסיס מכוניות המרוץ Super Trofeo.',
+    photo: {
+      author: 'Calreyn88',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Lamborghini_Huracan_STO_23.jpg',
+    },
   },
   {
     id: '911-gt3-rs',
@@ -72,8 +92,14 @@ const CARS: Car[] = [
     topSpeed: 296,
     zeroToHundred: 3.2,
     price: 241000,
-    color: '#e2e8f0',
+    color: '#94a3b8',
     description: 'כנף אחורית מתכווננת (DRS) ו-860 ק"ג כוח הצמדה ב-285 קמ"ש.',
+    photo: {
+      author: 'Alexander Migl',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_RS_MYLE_Festival_2025_DSC_9586_(cropped).jpg',
+    },
   },
   {
     id: '918-spyder',
@@ -85,8 +111,13 @@ const CARS: Car[] = [
     topSpeed: 345,
     zeroToHundred: 2.6,
     price: 845000,
-    color: '#94a3b8',
+    color: '#cbd5e1',
     description: 'אחת משלוש ההייפרקארים ההיברידיות המקוריות. יוצרו רק 918 יחידות.',
+    photo: {
+      author: 'Thomas Wolf, www.foto-tw.de',
+      license: 'CC BY-SA 3.0 de',
+      source: 'https://commons.wikimedia.org/wiki/File:Porsche_918_Spyder_IAA_2013_(Zuschnitt).jpg',
+    },
   },
   {
     id: '750s',
@@ -100,6 +131,11 @@ const CARS: Car[] = [
     price: 330000,
     color: '#f97316',
     description: 'שלדת מונוקוק מסיבי פחמן ויחס הספק-משקל מהגבוהים בקטגוריה.',
+    photo: {
+      author: 'Calreyn88',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:2024_McLaren_750S_2.jpg',
+    },
   },
   {
     id: 'p1',
@@ -111,8 +147,13 @@ const CARS: Car[] = [
     topSpeed: 350,
     zeroToHundred: 2.8,
     price: 1150000,
-    color: '#facc15',
+    color: '#7c3aed',
     description: 'יורשת רוחנית של ה-F1, עם מצב Race שמנמיך את המכונית ב-50 מ"מ.',
+    photo: {
+      author: 'MrWalkr',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:2013_McLaren_P1_MSO.jpg',
+    },
   },
   {
     id: 'chiron-super-sport',
@@ -124,8 +165,14 @@ const CARS: Car[] = [
     topSpeed: 440,
     zeroToHundred: 2.4,
     price: 3900000,
-    color: '#1d4ed8',
+    color: '#e5e7eb',
     description: 'גרסת הזנב הארוך של השירון, שתוכננה לשבירת שיאי מהירות.',
+    photo: {
+      author: 'Vauxford',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:2021_Bugatti_Chiron_Super_Sport_8.0_Front.jpg',
+    },
   },
   {
     id: 'tourbillon',
@@ -137,8 +184,13 @@ const CARS: Car[] = [
     topSpeed: 445,
     zeroToHundred: 2.0,
     price: 4100000,
-    color: '#0ea5e9',
+    color: '#7dd3fc',
     description: 'הבוגאטי הראשונה בעידן ההיברידי, עם לוח מחוונים מכני בהשראת שעוני יוקרה.',
+    photo: {
+      author: 'MrWalkr',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Bugatti_Tourbillon.jpg',
+    },
   },
 ];
 

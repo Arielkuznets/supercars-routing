@@ -71,14 +71,12 @@
 
       <aside class="preview card">
         @if (selectedCar(); as c) {
-          <app-car-silhouette [color]="c.color" />
+          <app-car-photo [car]="c" sizes="(max-width: 760px) 100vw, 420px" />
           <h3>
             <bdi>{{ c.model }}</bdi>
           </h3>
           <p class="muted">
-            {{ c.hp }} כ"ס · {{ c.topSpeed }} קמ"ש · 0-100 ב-{{
-              c.zeroToHundred | number: '1.1-1'
-            }}
+            {{ c.hp }} כ"ס · {{ c.topSpeed }} קמ"ש · 0-100 ב-{{ c.zeroToHundred | number: '1.1-1' }}
             שנ'
           </p>
         } @else {

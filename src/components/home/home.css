@@ -24,24 +24,42 @@
 }
 
 .hero-car {
+  position: relative;
   display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--border);
   text-decoration: none;
-  transition: transform 0.3s;
+  box-shadow: 0 30px 70px -30px color-mix(in srgb, var(--glow) 55%, transparent);
 }
 
-.hero-car:hover {
-  transform: scale(1.03);
+.hero-car app-car-photo {
+  transition: transform 0.5s ease;
+}
+
+.hero-car:hover app-car-photo {
+  transform: scale(1.04);
 }
 
 .hero-caption {
-  display: block;
-  text-align: center;
-  margin-top: 0.75rem;
+  position: absolute;
+  inset: auto 0 0 0;
+  display: grid;
+  padding: 3rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
   color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .hero-caption strong {
-  color: var(--text);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.hero-caption span {
+  color: var(--accent-2);
+  font-weight: 700;
 }
 
 .stats {
@@ -79,10 +97,15 @@
 .brand-card {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 0.25rem;
+  min-height: 160px;
   padding: 1.25rem;
   text-decoration: none;
   border-top: 4px solid var(--brand-color);
+  background:
+    linear-gradient(to top, rgba(10, 12, 16, 0.95) 20%, rgba(10, 12, 16, 0.15)),
+    var(--cover) center / cover;
   transition:
     transform 0.2s,
     border-color 0.2s;

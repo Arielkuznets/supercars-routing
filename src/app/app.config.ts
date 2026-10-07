@@ -18,7 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withComponentInputBinding(), // פרמטרים מה-URL נכנסים ישירות ל-input() של הקומפוננטה
-      withViewTransitions(), // אנימציית מעבר בין דפים (View Transitions API)
+      // אנימציית מעבר בין דפים (View Transitions API). בטעינה הראשונה אין ממה לעבור, אז מדלגים
+      withViewTransitions({ skipInitialTransition: true }),
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withPreloading(PreloadAllModules), // אחרי הטעינה הראשונה, שאר הדפים נטענים ברקע
     ),

@@ -7,6 +7,13 @@ export interface Brand {
   color: string;
 }
 
+// קרדיט לצלם, כנדרש ברישיונות Creative Commons של התמונות
+export interface PhotoCredit {
+  author: string;
+  license: string;
+  source: string;
+}
+
 export interface Car {
   id: string;
   brand: BrandSlug;
@@ -19,6 +26,7 @@ export interface Car {
   price: number; // דולר
   color: string;
   description: string;
+  photo: PhotoCredit;
 }
 
 export type SortKey = 'hp' | 'topSpeed' | 'zeroToHundred' | 'price';

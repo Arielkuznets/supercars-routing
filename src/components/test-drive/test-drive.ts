@@ -10,7 +10,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { HasUnsavedChanges } from '../../routing/unsaved-changes-guard';
 import { CarsService } from '../../services/cars';
-import { CarSilhouette } from '../car-silhouette/car-silhouette';
+import { CarPhoto } from '../car-photo/car-photo';
 
 interface Booking {
   name: string;
@@ -20,7 +20,7 @@ interface Booking {
 
 @Component({
   selector: 'app-test-drive',
-  imports: [ReactiveFormsModule, RouterLink, DatePipe, DecimalPipe, CarSilhouette],
+  imports: [ReactiveFormsModule, RouterLink, DatePipe, DecimalPipe, CarPhoto],
   templateUrl: './test-drive.html',
   styleUrl: './test-drive.css',
 })

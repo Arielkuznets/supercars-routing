@@ -58,6 +58,10 @@ select.ng-invalid.ng-touched {
   top: 6rem;
 }
 
+.preview app-car-photo {
+  border-radius: 12px;
+}
+
 .preview h3 {
   margin-top: 1rem;
   font-size: 1.4rem;

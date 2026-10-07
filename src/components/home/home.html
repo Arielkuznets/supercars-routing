@@ -9,14 +9,14 @@
     </div>
   </div>
 
-  <a class="hero-car" [routerLink]="['/car', fastest().id]">
-    <app-car-silhouette [color]="fastest().color" [transitionName]="'car-' + fastest().id" />
+  <a class="hero-car" [routerLink]="['/car', fastest().id]" [style.--glow]="fastest().color">
+    <app-car-photo [car]="fastest()" [priority]="true" sizes="(max-width: 760px) 100vw, 600px" />
     <span class="hero-caption">
-      המהירה בגראז':
+      המהירה בגראז'
       <strong
         ><bdi>{{ fastest().model }}</bdi></strong
       >
-      · {{ fastest().topSpeed }} קמ"ש
+      <span>{{ fastest().topSpeed }} קמ"ש</span>
     </span>
   </a>
 </section>
@@ -48,6 +48,7 @@
         class="brand-card card"
         [routerLink]="['/garage', brand.slug]"
         [style.--brand-color]="brand.color"
+        [style.--cover]="'url(cars/' + brand.coverId + '-600.webp)'"
       >
         <strong>{{ brand.name }}</strong>
         <span class="muted">{{ brand.country }} · {{ brand.count }} דגמים</span>

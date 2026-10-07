@@ -3,11 +3,11 @@ import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Car } from '../../models/car';
 import { CarsService } from '../../services/cars';
-import { CarSilhouette } from '../car-silhouette/car-silhouette';
+import { CarPhoto } from '../car-photo/car-photo';
 
 @Component({
   selector: 'app-car-details',
-  imports: [RouterLink, DecimalPipe, CurrencyPipe, CarSilhouette],
+  imports: [RouterLink, DecimalPipe, CurrencyPipe, CarPhoto],
   templateUrl: './car-details.html',
   styleUrl: './car-details.css',
 })
