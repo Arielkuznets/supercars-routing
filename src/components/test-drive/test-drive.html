@@ -1,0 +1,90 @@
+<section>
+  <header class="page-head">
+    <p class="eyebrow">נסיעת מבחן</p>
+    <h1>הגיע הזמן להרגיש את זה</h1>
+    <p class="muted">ממלאים פרטים, בוחרים מכונית, ואנחנו חוזרים אליכם לתיאום.</p>
+  </header>
+
+  @if (booking(); as b) {
+    <div class="success card">
+      <div class="success-icon">🏁</div>
+      <h2>תודה {{ b.name }}!</h2>
+      <p class="muted">
+        נסיעת המבחן ב-<strong
+          ><bdi>{{ b.car }}</bdi></strong
+        >
+        נקבעה ל-{{ b.date | date: 'd.M.yyyy' }}.
+      </p>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" (click)="booking.set(null)">הזמנה נוספת</button>
+        <a class="btn btn-primary" routerLink="/garage">חזרה לגראז'</a>
+      </div>
+    </div>
+  } @else {
+    <div class="layout">
+      <form class="card form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <label class="field">
+          <span>שם מלא</span>
+          <input formControlName="fullName" autocomplete="name" />
+          @if (showError(form.controls.fullName)) {
+            <small class="error">נא להזין שם (לפחות 2 תווים)</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>טלפון נייד</span>
+          <input
+            formControlName="phone"
+            type="tel"
+            inputmode="numeric"
+            placeholder="05XXXXXXXX"
+            dir="ltr"
+          />
+          @if (showError(form.controls.phone)) {
+            <small class="error">מספר בן 10 ספרות שמתחיל ב-05</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>מכונית</span>
+          <select formControlName="carId">
+            <option value="" disabled>בחרו מכונית</option>
+            @for (c of cars(); track c.id) {
+              <option [value]="c.id">{{ isolate(c.model) }}</option>
+            }
+          </select>
+          @if (showError(form.controls.carId)) {
+            <small class="error">נא לבחור מכונית</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>תאריך מבוקש</span>
+          <input formControlName="date" type="date" [min]="today" />
+          @if (showError(form.controls.date)) {
+            <small class="error">נא לבחור תאריך</small>
+          }
+        </label>
+
+        <button type="submit" class="btn btn-primary">שליחת בקשה</button>
+      </form>
+
+      <aside class="preview card">
+        @if (selectedCar(); as c) {
+          <app-car-silhouette [color]="c.color" />
+          <h3>
+            <bdi>{{ c.model }}</bdi>
+          </h3>
+          <p class="muted">
+            {{ c.hp }} כ"ס · {{ c.topSpeed }} קמ"ש · 0-100 ב-{{
+              c.zeroToHundred | number: '1.1-1'
+            }}
+            שנ'
+          </p>
+        } @else {
+          <p class="muted">בחרו מכונית כדי לראות אותה כאן</p>
+        }
+      </aside>
+    </div>
+  }
+</section>

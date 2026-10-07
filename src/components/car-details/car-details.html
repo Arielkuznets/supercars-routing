@@ -1,0 +1,51 @@
+<article [style.--car-color]="car().color">
+  <a class="back" [routerLink]="['/garage', car().brand]">→ חזרה ל{{ brand()?.name }}</a>
+
+  <div class="layout">
+    <div class="showroom">
+      <app-car-silhouette [color]="car().color" [transitionName]="'car-' + car().id" />
+    </div>
+
+    <div class="info">
+      <p class="eyebrow">{{ brand()?.name }} · {{ brand()?.country }} · {{ car().year }}</p>
+      <h1>
+        <bdi>{{ car().model }}</bdi>
+      </h1>
+      <p class="muted">{{ car().description }}</p>
+
+      <div class="stats">
+        @for (s of stats(); track s.label) {
+          <div class="stat">
+            <div class="stat-head">
+              <span>{{ s.label }}</span>
+              <strong
+                >{{ s.value | number: s.digits }} <small>{{ s.unit }}</small></strong
+              >
+            </div>
+            <div class="bar"><div class="bar-fill" [style.width.%]="s.percent"></div></div>
+          </div>
+        }
+      </div>
+
+      <dl class="facts">
+        <div>
+          <dt>מנוע</dt>
+          <dd>{{ car().engine }}</dd>
+        </div>
+        <div>
+          <dt>מחיר משוער</dt>
+          <dd class="price">{{ car().price | currency: 'USD' : 'symbol' : '1.0-0' }}</dd>
+        </div>
+      </dl>
+
+      <div class="actions">
+        <a class="btn btn-primary" routerLink="/test-drive" [queryParams]="{ car: car().id }">
+          🗝️ הזמנת נסיעת מבחן
+        </a>
+        <a class="btn btn-ghost" [routerLink]="['/car', nextCar().id]">
+          הבאה: <bdi>{{ nextCar().model }}</bdi> ←
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

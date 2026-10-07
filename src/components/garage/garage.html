@@ -1,0 +1,76 @@
+<section>
+  <header class="page-head">
+    <p class="eyebrow">הגראז'</p>
+    <h1>{{ currentBrand()?.name ?? 'כל המכוניות' }}</h1>
+    <p class="muted">{{ cars().length }} מכוניות · ממוינות לפי {{ activeSort().label }}</p>
+  </header>
+
+  <!-- כל כפתור הוא קישור לנתיב אחר. queryParamsHandling שומר על המיון הנוכחי -->
+  <nav class="chips" aria-label="סינון לפי יצרן">
+    <a
+      class="chip"
+      [routerLink]="['/garage', 'all']"
+      queryParamsHandling="preserve"
+      routerLinkActive="active"
+    >
+      הכל
+    </a>
+    @for (b of brands; track b.slug) {
+      <a
+        class="chip"
+        [routerLink]="['/garage', b.slug]"
+        queryParamsHandling="preserve"
+        routerLinkActive="active"
+      >
+        <span class="dot" [style.background]="b.color"></span>
+        {{ b.name }}
+      </a>
+    }
+  </nav>
+
+  <div class="sort-bar">
+    <span class="muted">מיון:</span>
+    @for (o of sortOptions; track o.key) {
+      <a
+        class="sort-btn"
+        [routerLink]="[]"
+        [queryParams]="{ sort: o.key }"
+        [class.active]="activeSort().key === o.key"
+      >
+        {{ o.label }}
+      </a>
+    }
+  </div>
+
+  <div class="grid">
+    @for (car of cars(); track car.id) {
+      <a class="car-card card" [routerLink]="['/car', car.id]">
+        <app-car-silhouette [color]="car.color" [transitionName]="'car-' + car.id" />
+        <span class="brand-tag">{{ brandName(car.brand) }} · {{ car.year }}</span>
+        <h3>
+          <bdi>{{ car.model }}</bdi>
+        </h3>
+        <dl class="mini-specs">
+          <div>
+            <dt>כ"ס</dt>
+            <dd>{{ car.hp | number }}</dd>
+          </div>
+          <div>
+            <dt>קמ"ש</dt>
+            <dd>{{ car.topSpeed }}</dd>
+          </div>
+          <div>
+            <dt>0-100</dt>
+            <dd>{{ car.zeroToHundred | number: '1.1-1' }}s</dd>
+          </div>
+        </dl>
+        <p class="price">{{ car.price | currency: 'USD' : 'symbol' : '1.0-0' }}</p>
+      </a>
+    } @empty {
+      <div class="empty card">
+        <p>אין בגראז' מכוניות של "{{ brand() }}".</p>
+        <a class="btn btn-ghost" routerLink="/garage/all">לכל המכוניות</a>
+      </div>
+    }
+  </div>
+</section>

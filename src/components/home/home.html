@@ -1,0 +1,64 @@
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">ANGULAR 21 · ROUTER · SIGNALS</p>
+    <h1>המהירות<br /><span>מתחילה כאן.</span></h1>
+    <p class="muted">עשר מכוניות-על מחמש יצרניות, מפרטים אמיתיים, ונסיעת מבחן במרחק לחיצה.</p>
+    <div class="actions">
+      <a class="btn btn-primary" routerLink="/garage">כניסה לגראז'</a>
+      <a class="btn btn-ghost" routerLink="/test-drive">הזמנת נסיעת מבחן</a>
+    </div>
+  </div>
+
+  <a class="hero-car" [routerLink]="['/car', fastest().id]">
+    <app-car-silhouette [color]="fastest().color" [transitionName]="'car-' + fastest().id" />
+    <span class="hero-caption">
+      המהירה בגראז':
+      <strong
+        ><bdi>{{ fastest().model }}</bdi></strong
+      >
+      · {{ fastest().topSpeed }} קמ"ש
+    </span>
+  </a>
+</section>
+
+<section class="stats">
+  <div class="stat card">
+    <strong>{{ carCount() }}</strong>
+    <span class="muted">מכוניות בגראז'</span>
+  </div>
+  <div class="stat card">
+    <strong>{{ records().maxHp | number }}</strong>
+    <span class="muted">כוחות סוס בשיא</span>
+  </div>
+  <div class="stat card">
+    <strong>{{ records().maxTopSpeed }}</strong>
+    <span class="muted">קמ"ש מהירות מרבית</span>
+  </div>
+  <div class="stat card">
+    <strong>{{ records().bestZeroToHundred | number: '1.1-1' }}s</strong>
+    <span class="muted">0-100 הכי מהיר</span>
+  </div>
+</section>
+
+<section class="block">
+  <h2>בחרו יצרן</h2>
+  <div class="brands">
+    @for (brand of brands(); track brand.slug) {
+      <a
+        class="brand-card card"
+        [routerLink]="['/garage', brand.slug]"
+        [style.--brand-color]="brand.color"
+      >
+        <strong>{{ brand.name }}</strong>
+        <span class="muted">{{ brand.country }} · {{ brand.count }} דגמים</span>
+      </a>
+    }
+  </div>
+</section>
+
+<!-- הקומפוננטה נטענת רק כשהמשתמש גולל אליה (defer) -->
+@defer (on viewport) {
+  <app-leaderboard />
+} @placeholder {
+  <div class="leaderboard-placeholder card">טבלת התאוצה תיטען כשתגיעו לכאן...</div>
+}

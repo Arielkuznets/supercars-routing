@@ -1,59 +1,36 @@
-# SupercarsRouting
+# SuperCars – Angular Routing
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.22.
+אתר מכוניות ספורט שנבנה ב-Angular 21 כתרגיל בניתוב (Routing).
 
-## Development server
+## הדפים
 
-To start a local development server, run:
+| נתיב | דף | מה מודגם |
+| --- | --- | --- |
+| `/` | דף הבית | `routerLink`, ‏`@defer (on viewport)` |
+| `/garage/:brand` | הגראז' – סינון לפי יצרן | פרמטר בנתיב + query param ‏(`?sort=price`) |
+| `/car/:id` | דף רכב | Resolver, כותרת דינמית, שימוש חוזר בקומפוננטה |
+| `/test-drive` | הזמנת נסיעת מבחן | Reactive Forms + ‏`canDeactivate` guard |
+| `**` | 404 | ניווט מתוך קוד עם `Router.navigate` |
 
-```bash
-ng serve
-```
+## יכולות ניתוב
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Lazy loading** – כל דף נטען עם `loadComponent` ומקבל chunk משלו.
+- **`withComponentInputBinding`** – פרמטרים מה-URL נכנסים ישירות ל-`input()` של הקומפוננטה, בלי `ActivatedRoute`.
+- **Resolver** – דף הרכב מקבל את הנתונים לפני שהוא מוצג. אם ה-id לא קיים, מוחזר `RedirectCommand` לדף 404.
+- **Guard** – יציאה מטופס שמולא חלקית דורשת אישור.
+- **`redirectTo`** – הכתובת `/garage` מפנה ל-`/garage/all`.
+- **`TitleStrategy`** – כותרת הטאב משתנה לפי הדף, כולל שם הרכב או היצרן.
+- **`withViewTransitions`** – אנימציית מעבר בין דפים. המכונית "עוברת" מהכרטיס לדף הרכב, ומחליפה מקום כשמשנים מיון.
+- **`withPreloading(PreloadAllModules)`** – אחרי הטעינה הראשונה, שאר הדפים נטענים ברקע.
+- **`Router.currentNavigation`** – signal שמפעיל פס טעינה בזמן ניווט.
 
-## Code scaffolding
+בנוסף: Standalone Components, ‏Signals ‏(`signal`, ‏`computed`, ‏`input`), ‏control flow חדש (`@if`, ‏`@for`, ‏`@empty`) ואפליקציה בלי Zone.js (zoneless).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## הרצה
 
 ```bash
-ng build
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ואז לפתוח את `http://localhost:4200`.

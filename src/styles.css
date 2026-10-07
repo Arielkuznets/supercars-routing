@@ -1,1 +1,147 @@
-/* You can add global styles to this file, and also import other style files */
+/* משתני עיצוב משותפים לכל האתר */
+:root {
+  --bg: #0a0c10;
+  --surface: #12161d;
+  --surface-2: #1a1f29;
+  --border: #262d3a;
+  --text: #e8ebf0;
+  --muted: #8b95a7;
+  --accent: #ef3b2d;
+  --accent-2: #ff8a1f;
+  --success: #22c55e;
+  --radius: 16px;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rubik', 'Segoe UI', Tahoma, sans-serif;
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(239, 59, 45, 0.12), transparent 60%), var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* ===== רכיבים משותפים ===== */
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.page-head {
+  margin-bottom: 1.75rem;
+}
+
+.page-head h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 900;
+}
+
+.page-head .muted {
+  margin: 0.5rem 0 0;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ===== אנימציית מעבר בין דפים (View Transitions API) ===== */
+
+::view-transition-old(root) {
+  animation: 160ms ease-in both page-out;
+}
+
+::view-transition-new(root) {
+  animation: 280ms ease-out both page-in;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
